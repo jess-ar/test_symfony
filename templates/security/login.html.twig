@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Log in!{% endblock %}
+
+{% block body %}
+    {% include 'components/back_arrow.html.twig' %}
+    <div class="flex items-center justify-center min-h-screen p-4">
+        <div class="w-full max-w-md p-8 bg-gray-800 rounded-lg shadow-xl">
+            <h1 class="mb-6 text-4xl font-bold text-center text-teal-500">¡Bienvenidx!</h1>
+
+            {% if error %}
+                <div class="mb-4 text-center text-red-500 alert alert-danger">
+                    {{ error.messageKey|trans(error.messageData, 'security') }}
+                </div>
+            {% endif %}
+
+            {% if app.user %}
+                <div class="mb-3 text-center text-white">
+                    Estás conectado como {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}" class="text-teal-500 hover:text-teal-700">Cerrar sesión</a>
+                </div>
+            {% endif %}
+
+            <form method="post" class="space-y-6">
+                <div>
+                    <label for="inputEmail" class="text-lg font-medium text-teal-800">Email</label>
+                    <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="block w-full py-2 mt-1 border-2 border-teal-200 rounded-md shadow-sm focus:border-gray-600" autocomplete="email" required autofocus>
+                </div>
+
+                <div>
+                    <label for="inputPassword" class="text-lg font-medium text-teal-800">Contraseña</label>
+                    <input type="password" name="password" id="inputPassword" class="block w-full py-2 mt-1 border-2 border-teal-200 rounded-md shadow-sm focus:border-gray-600" autocomplete="current-password" required>
+                </div>
+
+                <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+
+                <div class="mb-3">
+                    <label class="flex items-center text-sm text-gray-600">
+                        <input type="checkbox" name="_remember_me" class="text-teal-500 border-2 border-teal-200 focus:border-teal-500">
+                        <span class="ml-2">Recordarme</span>
+                    </label>
+                </div>
+
+                <button class="w-full px-4 py-3 font-bold text-white transition duration-300 ease-in-out transform bg-teal-800 rounded-full hover:bg-gray-600 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50" type="submit">
+                    Iniciar sesión
+                </button>
+            </form>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Lista de Posts{% endblock %}
+
+{% block body %}
+    {% include 'components/back_arrow.html.twig' %}
+    
+    <div class="flex items-center justify-center min-h-screen p-4">
+        <div class="w-full max-w-md p-8 rounded-lg shadow-xl">
+            <h1 class="mb-6 text-4xl font-bold text-center text-teal-500">Lista de Posts</h1>
+
+            <a href="{{ path('post_new') }}" class="flex w-40 px-6 py-2 mb-6 text-xl text-white bg-teal-500 rounded-lg hover:bg-teal-700">
+                Crear Nuevo Post
+            </a>
+
+            {% for message in app.flashes('success') %}
+                <div id="flash-message" class="p-4 mb-4 text-green-800 transition-opacity duration-500 ease-in-out bg-green-100 border border-green-400 rounded-lg">
+                    {{ message }}
+                </div>
+            {% endfor %}
+
+            {% if posts|length > 0 %}
+                <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+                    {% for post in posts %}
+                        {% include 'components/post_card.html.twig' with { 'post': post } %}
+                    {% endfor %}
+                </div>
+            {% else %}
+                <p class="text-center text-gray-500">No hay posts disponibles.</p>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

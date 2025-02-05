@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello TestController!{% endblock %}
+
+{% block body %}
+
+<div class="w-11/12 max-w-4xl m-2 mx-auto my-4 font-sans text-base bg-teal-400 example-wrapper">
+    <h1>Hello {{ controller_name }}! ✅</h1>
+    <h2 class="pb-4 text-red-500">Esto es una prueba</h2>
+    <h3 style="color: blue;">Esto es una prueba en azul sin Tailwind</h3>
+
+
+    This friendly message is coming from:
+    <ul>
+        <li>Your controller at <code>C:/Users/jessi/Dev/test_symfony/src/Controller/TestController.php</code></li>
+        <li>Your template at <code>C:/Users/jessi/Dev/test_symfony/templates/test/index.html.twig</code></li>
+    </ul>
+
+    
+    <div class="flex flex-col items-center gap-6 p-7 md:flex-row md:gap-8 rounded-2xl">  
+        <div>    
+            <img class="rounded-md shadow-xl size-48" alt="" src="/img/cover.png" />  
+        </div>  
+        <div class="flex items-center md:items-start">    
+            <span class="text-2xl font-medium">Hola</span>    
+            <span class="font-medium text-blue">Esto es una prueba</span>    
+            <span class="flex gap-2 font-medium text-gray-600 dark:text-gray-400">      
+                <span>No. 4</span>      
+                <span>·</span>      
+                <span>2025</span>    
+            </span>  
+        </div>
+    </div>
+</div>
+
+{% endblock %}
