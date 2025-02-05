@@ -1,5 +1,8 @@
 
 ###> symfony/framework-bundle ###
+# Ignorar archivos de entorno
+.env
+.env.*
 /.env.local
 /.env.local.php
 /.env.*.local
